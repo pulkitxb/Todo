@@ -1,9 +1,15 @@
-import './App.css'
-
+import styles from "./App.module.css"
+import Search from "./components/Search"
+import Todo from "./components/Todo"
 function App() {
 
   return (
-    <h1>Home Page</h1>
+    <main className={styles.main}>
+      <div className={styles.container}>
+        <Search />
+        <Todo />
+      </div>
+    </main>
   )
 }
 

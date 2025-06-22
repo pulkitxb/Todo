@@ -1,0 +1,12 @@
+.todoContainer {
+    width: 15rem;
+}
+
+.heading {
+    margin: 1rem 0 0;
+    color: white;
+}
+
+.line {
+    border: 0.025rem solid white;
+}
