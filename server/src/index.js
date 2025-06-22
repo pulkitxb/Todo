@@ -4,15 +4,22 @@ const { startStandaloneServer } = require("@apollo/server/standalone");
 const { addMocksToSchema } = require("@graphql-tools/mock");
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 const typeDefs = require("./schema.ts");
+const resolvers = require("./resolvers");
+const TodoAPI = require("./datasources/todo-api");
 
 
 async function startApolloServer() {
-    const server = new ApolloServer({
-        schema: addMocksToSchema({
-            schema: makeExecutableSchema({ typeDefs }),
-        }),
+    const server = new ApolloServer({ typeDefs, resolvers });
+    const { url } = await startStandaloneServer(server, {
+        context: async () => {
+            const { cache } = server;
+            return {
+                dataSources: {
+                    todoAPI: new TodoAPI({ cache })
+                }
+            }
+        }
     });
-    const { url } = await startStandaloneServer(server);
     console.log(`Server is running at port ${url}`);
 }
 
