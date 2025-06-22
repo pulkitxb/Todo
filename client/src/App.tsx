@@ -1,13 +1,13 @@
 import styles from "./App.module.css"
-import Search from "./components/Search"
-import Todo from "./components/Todo"
+import Add from "./components/Add"
+import TodoList from "./components/TodoList"
 function App() {
 
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <Search />
-        <Todo />
+        <Add />
+        <TodoList />
       </div>
     </main>
   )

@@ -12,7 +12,7 @@ const TODOS = gql`
     }
 `
 
-function Todo() {
+function TodoList() {
     const { data, error, loading } = useQuery<Query>(TODOS);
 
     if (loading) {
@@ -39,4 +39,4 @@ function Todo() {
     )
 }
 
-export default Todo
+export default TodoList
